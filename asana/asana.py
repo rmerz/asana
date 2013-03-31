@@ -2,6 +2,7 @@
 
 import requests
 import time
+import base64
 
 try:
     import simplejson as json
@@ -33,7 +34,7 @@ class AsanaAPI(object):
         :returns: the basic auth string
         """
         s = self.apikey + ":"
-        return s.encode("base64").rstrip()
+        return base64.b64encode(s.encode('utf-8').rstrip())
 
     def handle_exception(self, r):
         """ Handle exceptions
