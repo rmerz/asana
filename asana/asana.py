@@ -126,13 +126,8 @@ class AsanaAPI(object):
     @classmethod
     def _ok_status(cls, status_code):
         """Check whether status_code is a ok status i.e. 2xx or 404"""
-        if status_code / 200 is 1:
+        if status_code in [200, 201, 404]:
             return True
-        elif status_code / 400 is 1:
-            if status_code is 404:
-                return True
-            else:
-                return False
         elif status_code is 500:
             return False
 
